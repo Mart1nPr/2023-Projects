@@ -1,31 +1,44 @@
 async function getMessage() {
     const response = await fetch('https://kool.krister.ee/chat/TA23A');
     const message = await response.json();
-    console.log(message);
-    return message;
+    return message.slice(message.length - 15);
 }
 
 const chatContainer = document.querySelector('.chat-container');
-async function populateMessages () {
-    const messages = await getMessage()
+async function populateMessages (message) {
+    chatContainer.innerHTML = '';
+    const messages = await getMessage();
     for(const msg of messages) {
-        chatContainer.innerHTML = 
-            chatContainer.innerHTML + '<p class="message user-a">'+ msg.message + '</p>'
+        chatContainer.innerHTML = chatContainer.innerHTML + 
+            '<p class="user-a">'+ msg.name.slice(0,10).replace(/[\W]/g, "-")  + ": " + msg.message.slice(0, 40) + '</p>';
     }
+    window.scrollTo(0, document.body.scrollHeight);
 }
-populateMessages();
+
+populateMessages()
+setInterval(populateMessages, 2000)
+
+async function populateMembers(messages) {
+    const names = messages.map((message) => message.name); 
+    const uniqueNames = [...new Set(names)];
+    const membersContainer = document.querySelector(".menu-container");
+    membersContainer.innerHTML = "";
+    for (const name of uniqueNames) {
+        membersContainer.innerHTML +=`<p>€${name}</p>`;
+    } 
+}
 
 async function sendMessage() {
     const name = document.querySelector('#name').value
-    console.log(name);
-        chatContainer.innerHTML = 
-            chatContainer.innerHTML + '<p class="message user-a">'+ name+ '</p>'
     const message = document.querySelector('#message').value
-    console.log(message);
-    chatContainer.innerHTML = 
-            chatContainer.innerHTML + '<p class="message user-a">'+ message + '</p>'
+    const body = {name: name, message: message}
+    await fetch('https://kool.krister.ee/chat/TA23A', {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {'Content-Type': 'application/json'}
+    })
+
 }
 
-document.querySelector('#send').onclick = sendMessage
-
+document.querySelector('#send').onclick = sendMessage;
 
