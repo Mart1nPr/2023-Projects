@@ -1,0 +1,90 @@
+.Main-layout {
+    background-color: green;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+.Calculator-layout {
+    position: fixed;
+    border: 3px solid black;
+    background-color: gray;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 500px;
+    width: 300px;
+}
+
+.screen {
+    border: 3px solid black;
+    background-color: white;
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100px;
+    width: 250px;
+}
+
+#Number1 {
+    background-color: lightgray;
+    position: fixed;
+    height: 50px;
+    width: 50px;
+    top: 35%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+}
+
+#Number1:hover {
+    background-color: darkgray;
+    cursor: pointer;
+}
+
+#Number2 {
+    background-color: lightgray;
+    position: fixed;
+    height: 50px;
+    width: 50px;
+    top: 35%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+}
+
+#Number2:hover {
+    background-color: darkgray;
+    cursor: pointer;
+}
+
+#Number3 {
+    background-color: lightgray;
+    position: fixed;
+    height: 50px;
+    width: 50px;
+    top: 35%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+}
+
+#Number3:hover {
+    background-color: darkgray;
+    cursor: pointer;
+}
+
+#Number4 {
+    background-color: lightgray;
+    position: fixed;
+    height: 50px;
+    width: 50px;
+    top: 5%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+}
+
+#Number4:hover {
+    background-color: darkgray;
+    cursor: pointer;
+}
+
+
