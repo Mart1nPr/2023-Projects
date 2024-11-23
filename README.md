@@ -1,2 +1,2 @@
-## OOP
-Objektorienteeritud programmeerimis tööd 2023
+## 2023 Projects
+Kooli projektid, mis olen teinud.
